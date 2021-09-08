@@ -1,9 +1,13 @@
 version: '3'
 services:
   logstash:
-    image: docker.elastic.co/logstash/logstash:5.4.0
+    # image: docker.elastic.co/logstash/logstash:7.14.1
+    build: .
     volumes:
       - ./config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./pipeline:/usr/share/logstash/pipeline
+    environment:
+      - SCALYR_SERVER=https://agent.scalyr.com/
+      - SCALYR_API_KEY=REPLACE_ME
     stdin_open: true
     tty: true

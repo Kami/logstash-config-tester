@@ -1,0 +1,13 @@
+output {
+    scalyr {
+      id => "test"
+      api_write_token => "${SCALYR_API_KEY}"
+      scalyr_server => '${SCALYR_SERVER}'
+      flatten_nested_values => true
+      flatten_nested_values_delimiter => "."
+      status_report_interval => 60
+      report_status_for_empty_batches => false
+      http_request_timeout => 5
+      server_attributes => { "serverHost" => "test-serv-attributes-host"}
+    }
+}
